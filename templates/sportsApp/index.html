@@ -1,0 +1,18 @@
+{% extends 'sportsApp/base.html' %}
+{% block title_block %}
+: home
+{% endblock %}
+
+{% block body_block %}
+{% if sports_list %}
+    <ul>
+    {% for item in sports_list %}
+        <li>
+            {{ item.name }}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+<strong><i>No items yet!</i></strong>
+{% endif %}
+{% endblock %}
