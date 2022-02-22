@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -130,9 +131,9 @@ LOGIN_URL = "/accounts/login/"
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_DIR = path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [STATIC_DIR,]
-STATIC_URL = '/static/'
 MEDIA_ROOT = MEDIA_DIR
-MEDIA_URL = '/media/'
+STATIC_URL = 'static/'
+MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

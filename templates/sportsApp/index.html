@@ -1,14 +1,34 @@
 {% extends 'sportsApp/base.html' %}
+{% load static %}
 {% block title_block %}
 : home
 {% endblock %}
 
 {% block body_block %}
+<div>
+<h1>Sports.</h1>
 {% if sports_list %}
     <ul>
     {% for item in sports_list %}
         <li>
-            {{ item.name }}
+            <a href="{% url 'sportsApp:sports' item.slug %}">{{ item.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+<strong><i>No items yet!</i></strong>
+{% endif %}
+</div>
+<h1>Latest Items.</h1>
+{% if blog_list %}
+    <ul>
+    {% for item in blog_list %}
+        <li>
+            <h2>{{ item.title }}:</h2>
+            <img src="{{ MEDIA_URL }}{{ item.picture }}"
+                width="300"
+                height="300"
+                alt="sports image" />
         </li>
     {% endfor %}
     </ul>

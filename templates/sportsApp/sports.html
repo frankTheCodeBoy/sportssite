@@ -1,0 +1,26 @@
+{% extends 'sportsApp/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    {{ sport.name }}
+{% endblock %}
+   
+{% block body_block %}
+    {% if sports %}
+      <h1>{{ sports.name }}</h1>
+      {% if blogs %}
+        <ul>
+        {% for item in blogs %}
+          <li><h2>{{ item.title }}:</h2></li>
+          {{ item.blog }}
+        {% endfor %}
+        </ul>
+      {% else %}
+        <strong>No pages currently in this category!</strong>
+      {% endif %}
+    {% else %}
+     The specified category does not exist!
+    {% endif %}
+{% endblock %}
+    
+    

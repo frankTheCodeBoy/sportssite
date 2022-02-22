@@ -16,7 +16,6 @@ class SportBlogAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     prepopulated_fields = {
         'slug': ("title",),
-        'date_published': ("date_published",)
     }
     autocomplete_fields = ('sport',)
 

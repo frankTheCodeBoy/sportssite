@@ -15,4 +15,9 @@ urlpatterns = [
         views.AboutView.as_view(),
         name="about"
     ),
+    path(
+        "sports/<slug:sports_slug>/",
+        views.SportsView.as_view(),
+        name="sports"
+    ),
 ]

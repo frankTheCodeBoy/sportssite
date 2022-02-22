@@ -23,7 +23,7 @@ class SportBlog(models.Model):
     slug = models.SlugField(unique=True)
     blog = models.TextField()
     picture = models.ImageField(upload_to='blog_images', blank=True)
-    date_published = models.DateField(auto_now_add=True)
+    date_published = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
