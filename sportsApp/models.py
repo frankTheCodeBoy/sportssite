@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class Sport(models.Model):
     name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
@@ -22,6 +23,7 @@ class SportBlog(models.Model):
     views = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
     blog = models.TextField()
+    summary = models.TextField()
     picture = models.ImageField(upload_to='blog_images', blank=True)
     date_published = models.DateTimeField(auto_now_add=True)
 
@@ -63,15 +65,3 @@ class UserComments(models.Model):
 
     def __str__(self):
         return f"{self.comment[:100]}...."
-
-class Like(models.Model):
-    user = models.ForeignKey(
-        User, 
-        related_name='likes', 
-        on_delete=models.CASCADE
-    )
-    blog = models.ForeignKey(
-        SportBlog, 
-        related_name='likes', 
-        on_delete=models.CASCADE
-    )  

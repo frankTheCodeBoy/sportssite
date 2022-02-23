@@ -1,0 +1,26 @@
+li {
+    color: blue;
+}
+
+.sport-bg {
+    background-image: url("sport_ground.png");
+    background-position: center center;
+    
+}
+
+.content {
+    float: left;
+    clear: both;
+}
+
+.blog-content {
+    width: 50%;
+    height: auto;
+    float: right;
+    clear: right;
+}
+
+.custom {
+    clear: both;
+    text-decoration: underline;
+}

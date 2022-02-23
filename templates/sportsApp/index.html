@@ -5,34 +5,35 @@
 {% endblock %}
 
 {% block body_block %}
-<div>
+<div class="container sport-bg">
 <h1>Sports.</h1>
 {% if sports_list %}
-    <ul>
+    <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
     {% for item in sports_list %}
-        <li>
-            <a href="{% url 'sportsApp:sports' item.slug %}">{{ item.name }}</a>
-        </li>
+        <div class="p-2 flex-fill bd-highlight">
+            <a href="{% url 'sportsApp:sports' item.slug %}">
+                <h6>{{ item.name }}</h6></a>
+        </div>
     {% endfor %}
-    </ul>
+    </div>
 {% else %}
 <strong><i>No items yet!</i></strong>
+{% endif %}
+<h3>Top Sport Highlights.</h3>
+{% if blog_list %}
+<div>
+    {% for item in blog_list %}
+            <h3 class="custom">{{item.title}}</h3>
+            <div class="content">
+                <img src="{{MEDIA_URL}}{{item.picture}}"
+                    width="330" height="200">
+            </div>
+            <div class="blog-content">{{item.summary}}</div>
+    {% endfor %}
+</div>
+{% else %}
+<strong>No blogs added!</strong>
 {% endif %}
 </div>
-<h1>Latest Items.</h1>
-{% if blog_list %}
-    <ul>
-    {% for item in blog_list %}
-        <li>
-            <h2>{{ item.title }}:</h2>
-            <img src="{{ MEDIA_URL }}{{ item.picture }}"
-                width="300"
-                height="300"
-                alt="sports image" />
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-<strong><i>No items yet!</i></strong>
-{% endif %}
 {% endblock %}
+
