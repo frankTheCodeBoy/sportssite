@@ -24,3 +24,8 @@ li {
     clear: both;
     text-decoration: underline;
 }
+
+.custom-text {
+    text-align: center;
+    font-weight: bold;
+}

@@ -6,7 +6,7 @@
 
 {% block body_block %}
 <div class="container sport-bg">
-<h1>Sports.</h1>
+<h1>Sports</h1>
 {% if sports_list %}
     <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
     {% for item in sports_list %}
@@ -19,7 +19,23 @@
 {% else %}
 <strong><i>No items yet!</i></strong>
 {% endif %}
-<h3>Top Sport Highlights.</h3>
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" 
+  href="#" role="button" id="dropdownMenuLink" 
+  data-toggle="dropdown" aria-haspopup="true" 
+  aria-expanded="false">
+    <i>Other Sports</i>
+  </a>
+{% if other_sports %}
+<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    {% for item in other_sports %}
+    <a class="dropdown-item dropdown-header" href="#">{{item.name}}</a>
+    {% endfor %}
+</div>
+</div>
+{% endif %}
+<hr>
+<h2 class="custom-text">Top Sport Highlights</h2>
 {% if blog_list %}
 <div>
     {% for item in blog_list %}

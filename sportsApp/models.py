@@ -65,3 +65,13 @@ class UserComments(models.Model):
 
     def __str__(self):
         return f"{self.comment[:100]}...."
+
+class UpComingEvents(models.Model):
+    text = models.CharField(max_length=128)
+    url = models.URLField(blank=True)
+    location = models.CharField(max_length=128)
+    summary = models.TextField()
+
+    def __str__(self):
+        return self.text
+

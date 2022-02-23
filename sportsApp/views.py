@@ -12,9 +12,14 @@ from .forms import UserProfileForm
 
 class IndexView(View):
     def get(self, request):
-        sports_list = Sport.objects.all()
+        sports_list = Sport.objects.all()[:6]
+        other_sports = Sport.objects.all()[6:12]
         blog_list = SportBlog.objects.order_by('date_published')[:4]
-        context_dict = {'sports_list': sports_list, 'blog_list': blog_list}
+        context_dict = {
+            'sports_list': sports_list, 
+            'blog_list': blog_list,
+            'other_sports' : other_sports,     
+            }
         return render(request, 'sportsApp/index.html', context_dict)
 
 class AboutView(View):
