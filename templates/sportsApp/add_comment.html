@@ -1,0 +1,43 @@
+{% extends 'sportsApp/base.html' %}
+{% load static %}
+{% block title_block %}
+{% endblock %}
+
+{% load bootstrap4 %}
+{% block body_block %}
+{% if blog %}
+<h2>{{ blog.title }}</h2>
+<div>
+    {{ blog.blog }}
+</div>
+<h4><i>Posted Comments:</i></h4>
+<div>
+{% if user_comments %}
+<div>
+    {% for item in user_comments %}
+    <p>{{item.comment}}, {{item.owner}}, {{item.date_published}}</p>
+</div>
+    {% endfor %}
+</div>
+{% else %}
+<strong>No comments yet!</strong>
+{% endif %}
+<div>
+    <form action="{% url 'sportsApp:add_comment' blog.slug %}" method='post'>
+    {% csrf_token %}
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+    {% for field in form.visible_fields %}
+        {{ field.errors }}
+        {{ field }}
+    {% endfor %}
+    {% buttons %}
+     <button name='submit' class="btn btn-primary">Add Comments</button>
+    {% endbuttons %}
+  </form>   
+</div>
+{% else %}
+<strong>Content Unavailable!</strong>
+{% endif %}
+{% endblock %}

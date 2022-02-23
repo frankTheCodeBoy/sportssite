@@ -2,21 +2,37 @@
 {% load static %}
 
 {% block title_block %}
-    {{ sport.name }}
+    : {{ sport.name }}
 {% endblock %}
-   
+{% load bootstrap4 %}   
 {% block body_block %}
-    {% if sports %}
-      <h1>{{ sports.name }}</h1>
+    {% if sport %}
+      <h1>{{ sport.name }}</h1>
+      <div>
+      <strong id="like_count">{{ sport.likes }}</strong> 
+      people like this category
+      {% if user.is_authenticated %}
+      <button id="likes" data-catid="{{sport.id}}"
+      class="btn btn-primary btn-sm" type="button">
+      Like
+      </button>
+      {% endif %}
+      </div>
       {% if blogs %}
         <ul>
         {% for item in blogs %}
           <li><h2>{{ item.title }}:</h2></li>
           {{ item.blog }}
+          {% buttons %}
+          <a href="{% url 'sportsApp:add_comment' item.slug %}">
+            <button class="btn btn-primary btn-sm"
+            type="button">View Comments</button>
+          </a>
+          {% endbuttons %}
         {% endfor %}
         </ul>
       {% else %}
-        <strong>No pages currently in this category!</strong>
+        <strong>No items currently in this category!</strong>
       {% endif %}
     {% else %}
      The specified category does not exist!

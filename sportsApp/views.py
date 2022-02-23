@@ -7,8 +7,8 @@ from django.views import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Sport, SportBlog, Player, UserProfile, UserComments
-from .forms import UserProfileForm
+from .models import Sport, SportBlog, Player, UserProfile, UserComment
+from .forms import UserProfileForm, UserCommentForm
 
 class IndexView(View):
     def get(self, request):
@@ -30,25 +30,25 @@ class SportsView(View):
     def get(self,request, sports_slug):
         """Navigate to each sport"""
         context_dict = {}
-        sports = get_object_or_404(Sport, slug=sports_slug)
-        blogs = sports.sportblog_set.order_by('date_published')
-        context_dict['sports'] = sports
+        sport = get_object_or_404(Sport, slug=sports_slug)
+        blogs = sport.sportblog_set.order_by('date_published')
+        context_dict['sport'] = sport
         context_dict['blogs'] = blogs
         return render(request, 'sportsApp/sports.html', context_dict)
  
-# @login_required
-# def like_category(request):
-#     sports_id = None
-#     if request.method == 'GET':
-#         sports_id = request.GET.get('sports_id')
-#         likes=0
-#         if sports_id:
-#             sports = Sport.objects.get(id=int(sports_id))
-#             if sports:
-#                 likes = sports.likes + 1
-#                 sports.likes = likes
-#                 sports.save()
-#     return HttpResponse(likes)
+@login_required
+def like_sport(request):
+    sportid = None
+    if request.method == 'GET':
+        sportid = request.GET.get('sport_id')
+        likes=0
+        if sportid:
+            sport = Sport.objects.get(id=int(sportid))
+            if sport:
+                likes = sport.likes + 1
+                sport.likes = likes
+                sport.save()
+                return HttpResponse(likes)
 
 @login_required
 def register_profile(request):
@@ -122,3 +122,23 @@ class ListProfileView(generic.ListView):
   model = UserProfile
   template_name = 'sportsApp/list_profiles.html'
   context_object_name = 'userprofile_list'
+
+def add_comment(request, blog_slug):
+    blog = get_object_or_404(SportBlog, slug=blog_slug)
+    user_comments = blog.usercomment_set.order_by('date_published')
+    if request.method != 'POST':
+        form = UserCommentForm()
+    else:
+        form = UserCommentForm(data=request.POST)
+    if form.is_valid():
+        if blog:
+            new_comment = form.save(commit=False)
+            new_comment.blog = blog
+            new_comment.owner = request.user
+            new_comment.save()
+            return redirect("sportsApp:index")
+    else:
+        print(form.errors)
+
+    context_dict = {'form': form, 'blog': blog, 'user_comments': user_comments}
+    return render(request, 'sportsApp/add_comment.html', context_dict)

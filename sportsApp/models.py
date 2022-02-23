@@ -54,7 +54,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
-class UserComments(models.Model):
+class UserComment(models.Model):
     blog = models.ForeignKey(SportBlog, on_delete=models.CASCADE)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField()
@@ -64,7 +64,10 @@ class UserComments(models.Model):
         verbose_name_plural = 'user comments'
 
     def __str__(self):
-        return f"{self.comment[:100]}...."
+        if len(self.comment) <= 50:
+            return self.comment
+        else:
+            return f"{self.comment[:50]}..."
 
 class UpComingEvents(models.Model):
     text = models.CharField(max_length=128)

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Sport, SportBlog, Player, UserProfile, UserComments
+from .models import Sport, SportBlog, Player, UserProfile, UserComment
 
 # Register your models here.
 class SportAdmin(admin.ModelAdmin):
@@ -23,4 +23,4 @@ class SportBlogAdmin(admin.ModelAdmin):
 admin.site.register(SportBlog, SportBlogAdmin)
 admin.site.register(Player)
 admin.site.register(UserProfile)
-admin.site.register(UserComments)
+admin.site.register(UserComment)

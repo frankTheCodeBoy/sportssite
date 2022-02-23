@@ -35,9 +35,15 @@ urlpatterns = [
         views.ListProfileView.as_view(), 
         name='list_profiles'
     ),
-    # path(
-    #     'like/',
-    #     views.like_category,
-    #     name='like_category'
-    # ),
+    path(
+        'like/',
+        views.like_sport,
+        name='like_sport'
+    ),
+    path(
+        'add_comment/<slug:blog_slug>/',
+        views.add_comment,
+        name='add_comment'
+    ),
+
 ]
