@@ -1,0 +1,27 @@
+{% extends 'sportsApp/base.html' %}
+{% load static %}
+{% block title_block %}
+    search
+{% endblock %}
+{% load bootstrap4 %}
+{% block body_block %}
+<div class="container">
+<h1>Search Results</h1>
+{% if blogs %}
+    <ul>
+        {% for item in blogs %}
+        <li><a href="{% url 'sportsApp:add_comment' item.slug %}">
+            {{ item.title }}</a>
+            {% if item.views > 1 %}
+              ({{item.views}} views)
+            {% elif item.views == 1 %}
+              ({{item.views}} view)
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+        {% else %}
+        <strong>Story requested is not available</strong>
+{% endif %}
+</div>
+{% endblock %}

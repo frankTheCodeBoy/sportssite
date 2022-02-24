@@ -7,7 +7,7 @@
 {% load bootstrap4 %}   
 {% block body_block %}
     {% if sport %}
-      <h1>{{ sport.name }}</h1>
+      <h1 class="txtmaroon">{{ sport.name }}</h1>
       <div>
       <strong id="like_count">{{ sport.likes }}</strong> 
       people like this category
@@ -21,19 +21,25 @@
       {% if blogs %}
         <ul>
         {% for item in blogs %}
-          <li><h2>{{ item.title }}:</h2></li>
+          <li><h2 class="txtcaps underline txtoblique">{{ item.title }}:</h2></li>
           <div>
           {% if item.views > 1 %}
-              ({{item.views}} views)
+              <span class="txtbold">({{item.views}} views)</span>
           {% elif item.views == 1 %}
-              ({{item.views}} view)
+              <span class="txtbold">({{item.views}} view)</span>
           {% endif %} 
           </div>
-          {{ item.blog }}
+          <div>
+            <img src="{{MEDIA_URL}}{{item.picture}}"
+                width="40%">
+            <h6 class="underline txtgrey">Story - (posted {{item.date_published}})</h6>
+            <div>"{{item.blog}}"</div>
+          </div>
+          <hr>
           {% buttons %}
           <a href="{% url 'sportsApp:add_comment' item.slug %}">
             <button class="btn btn-primary btn-sm"
-            type="button">View Comment</button>
+            type="button">View Comments</button>
           </a>
           {% endbuttons %}
         {% endfor %}

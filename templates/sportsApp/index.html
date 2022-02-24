@@ -6,11 +6,12 @@
 
 {% block body_block %}
 <div class="container sport-bg">
-<h1>Sports</h1>
+<h1 class="txtcyan txtbold">Sports</h1>
 {% if sports_list %}
-    <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
+    <div class="d-flex flex-row bd-highlight mb-3 justify-content-center
+        container">
     {% for item in sports_list %}
-        <div class="p-2 flex-fill bd-highlight">
+        <div class="p-1 flex-fill bd-highlight">
             <a href="{% url 'sportsApp:sports' item.slug %}">
                 <h6>{{ item.name }}</h6></a>
         </div>
@@ -35,20 +36,72 @@
 </div>
 {% endif %}
 <hr>
-<h2 class="custom-text">Top Sport Highlights</h2>
+<h2 class="txtdarkred txtbold underline txtoblique">Top Sport Highlights</h2>
 {% if blog_list %}
-<div>
+<div class="d-flex flex-row bd-highlight mb-3 justify-content-center
+    container">
     {% for item in blog_list %}
-            <h3 class="custom">{{item.title}}</h3>
-            <div class="content">
+    <div class="p-2 flex-fill bd-highlight">
+            <h3 class="underline txtnavy txtcaps">{{item.title}}:</h3>
+            <div>
                 <img src="{{MEDIA_URL}}{{item.picture}}"
-                    width="330" height="200">
-            </div>
-            <div class="blog-content">{{item.summary}}</div>
+                    width="45%">
+            <div class="div-width"><a href="#">{{item.summary}}</a></div>
+        </div>
+    </div>        
     {% endfor %}
 </div>
 {% else %}
 <strong>No blogs added!</strong>
+{% endif %}
+{% if second_blog %}
+<div class="d-flex flex-row bd-highlight mb-3 justify-content-center
+    container">
+    {% for item in second_blog %}
+    <div class="p-2 flex-fill bd-highlight">
+            <h3 class="underline txtnavy txtcaps">{{item.title}}:</h3>
+            <div>
+                <img src="{{MEDIA_URL}}{{item.picture}}"
+                    width="45%">
+            <div class="div-width"><a href="#">{{item.summary}}</a></div>
+        </div>
+    </div>         
+    {% endfor %}
+</div>
+{% else %}
+<strong>No more blogs added!</strong>
+{% endif %}
+<hr>
+{% if player_list %}
+<h2 class="txtbold txtcyan">Featured ✰✰✰✰</h2> 
+    <h5 class="underline txtmaroon txtbold">
+    Weekly Stars - Players to Watch:
+    </h5>
+<div class="clear-both d-flex flex-row bd-highlight mb-3 justify-content-center
+    container">
+    {% for player in player_list %}
+    <div class="p-2 flex-fill bd-highlight">
+        <strong><h4 class="txtcaps txtbold txtorange">• {{ player.name }}</h4></strong>
+        <img src="{{MEDIA_URL}}{{player.picture}}"
+            width="50%">
+        <p class="player txtoblique">"{{player.profile_summary}}"</p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+<hr>
+{% if event_list %}
+<hr>
+<h3>Upcoming Sport Events</h3>
+<ul>
+    {% for event in event_list %}
+        <li>
+            {{event.text}}: {{event.date}} [{{event.location}}]
+        </li>
+</ul>
+    {% endfor %}
+{% else %}
+<strong><i>Your top events and recommendations appear here!</i></strong>
 {% endif %}
 </div>
 {% endblock %}

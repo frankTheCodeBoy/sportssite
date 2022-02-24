@@ -6,25 +6,34 @@
 {% load bootstrap4 %}
 {% block body_block %}
 {% if blog %}
-<h2>{{ blog.title }}</h2>
-<h3>{% if blog.views > 1 %}
+<h2 class="txtcaps txtmaroon underline txtoblique">{{ blog.title }}</h2>
+<h3 class="txtblue">{% if blog.views > 1 %}
         ({{blog.views}} views)
     {% elif blog.views == 1 %}
         ({{blog.views}} view)
           {% endif %} 
 </h3>
-<div>
+<div class="container sport-bg">
     {{ blog.blog }}
 </div>
-<h4><i>Posted Comments:</i></h4>
+<div class="container mb-4 mt-3">
+<h6 class="underline">Comments:</h6>
 <div>
 {% if user_comments %}
 <div>
     {% for item in user_comments %}
-    <p>{{item.comment}}, {{item.owner}}, {{item.date_published}}<br>
-    <a href="{% url 'sportsApp:edit_comment' item.id %}">Edit Comment</a>
-    </p>
-</div>
+    <div class="mb-3">
+    On <span class="txtgreen">{{item.date_published}} </span>
+    <span class="txtbold txtcaps">{{item.owner}}</span> commented:<br>
+    <span class="txtoblique txtcyan"> "{{item.comment}}"</span>
+    {% buttons %}
+    <a href="{% url 'sportsApp:edit_comment' item.id %}">
+     <button name='Edit Comment' class="btn btn-sm btn-primary">
+       Edit Comment 
+     </button>
+    </a>
+    {% endbuttons %}
+    </div>
     {% endfor %}
 </div>
 {% else %}
@@ -41,11 +50,12 @@
         {{ field }}
     {% endfor %}
     {% buttons %}
-     <button name='submit' class="btn btn-primary">Add Comments</button>
+     <button name='submit' class="btn btn-sm btn-success">Add Comment</button>
     {% endbuttons %}
   </form>   
 </div>
 {% else %}
 <strong>Content Unavailable!</strong>
 {% endif %}
+</div>
 {% endblock %}

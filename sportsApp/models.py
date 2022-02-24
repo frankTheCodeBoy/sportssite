@@ -69,11 +69,12 @@ class UserComment(models.Model):
         else:
             return f"{self.comment[:50]}..."
 
-class UpComingEvents(models.Model):
+class UpComingEvent(models.Model):
     text = models.CharField(max_length=128)
     url = models.URLField(blank=True)
     location = models.CharField(max_length=128)
     summary = models.TextField()
+    date = models.DateTimeField()
 
     def __str__(self):
         return self.text

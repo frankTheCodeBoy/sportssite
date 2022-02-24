@@ -20,7 +20,9 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 border">
     <li class="navbar-brand p-2 flex-fill bd-highlight">
-        <strong>Milele Sports Limited.</strong></li>
+        <strong class="txtred txtbold">Milele Sports Limited™</strong>
+        <br><strong>Your Home of Sports</strong>
+    </li>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarCollapse" aria-controls="navbarCollapse"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -34,14 +36,19 @@
         <li class="nav-item p-2 flex-fill bd-highlight">
           <a class="nav-link" href="{% url 'sportsApp:about' %}">About</a>
         </li>
+        <li class="nav-item p-2 flex-fill bd-highlight">
+          <a class="nav-link" 
+            href="{% url 'sportsApp:contact_us' %}">Contact Us</a>
+        </li>
         <li class="p-2 flex-fill bd-highlight">
-          <form class="form" action="#" 
+          <form class="form" action="{% url 'sportsApp:search_blog'  %}" 
             method="get">
             {% csrf_token %}
-            <input type="text" size="20" name="query" 
-                placeholder="search page...">
+            <input type="text" size="20" name="query">
             <button type="submit" 
-              class="btn btn-sm btn-primary p-2 flex-fill bd-highlight">Get Result</button>
+              class="btn btn-sm btn-primary p-2 flex-fill bd-highlight">
+                Sport Stories
+            </button>
           </form>
         </li>
       </ul>
@@ -79,7 +86,15 @@
     <div>
       {% block body_block %}{% endblock %}
     </div>
-  </main>
-  <script src="{% static 'js/ajax.js' %}" type="text/javascript"></script>
+    <footer class="page-footer font-small black clear">
+        <div class="footer-copyright text-center py-3">
+            Milele Sports Limited © 2021<br />
+        <small class="text-muted">
+            'All rights reserved'.
+        </small>
+      </div>
+    </footer>
+    <script src="{% static 'js/ajax.js' %}" type="text/javascript"></script>
+    </main>
 </body>
 </html>

@@ -7,18 +7,24 @@ from django.views import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Sport, SportBlog, Player, UserProfile, UserComment
+from .models import Sport, SportBlog, Player, UserProfile, UserComment, UpComingEvent
 from .forms import UserProfileForm, UserCommentForm
 
 class IndexView(View):
     def get(self, request):
         sports_list = Sport.objects.all()[:6]
         other_sports = Sport.objects.all()[6:12]
-        blog_list = SportBlog.objects.order_by('date_published')[:4]
+        blog_list = SportBlog.objects.order_by('date_published')[:2]
+        second_blog = SportBlog.objects.order_by('date_published')[2:4]
+        player_list = Player.objects.all()[:2]
+        event_list = UpComingEvent.objects.order_by('date')
         context_dict = {
             'sports_list': sports_list, 
             'blog_list': blog_list,
-            'other_sports' : other_sports,     
+            'second_blog': second_blog,
+            'other_sports': other_sports,
+            'player_list': player_list,
+            'event_list': event_list,     
             }
         return render(request, 'sportsApp/index.html', context_dict)
 
@@ -162,8 +168,11 @@ def edit_comment(request, item_id):
     context_dict = {'form': form, 'blog': blog, 'comment': comment}
     return render(request, "sportsApp/edit_comment.html", context_dict)
 
-# def search_page(request):
-#     search_text = request.GET['query']
-#     pages = Page.objects.filter(title__contains=search_text)
-#     context_dict = {'pages': pages}
-#     return render(request, 'rangoApp/search.html', context_dict)
+def search_blog(request):
+    search_text = request.GET['query']
+    blogs = SportBlog.objects.filter(title__contains=search_text)
+    context_dict = {'blogs': blogs}
+    return render(request, 'sportsApp/search.html', context_dict)
+
+def contact_us(request):
+    return render(request, 'sportsApp/contact-us.html', {})

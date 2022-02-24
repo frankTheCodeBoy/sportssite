@@ -50,4 +50,14 @@ urlpatterns = [
         views.edit_comment,
         name='edit_comment',
     ),
+    path(
+        'contact_us/',
+        views.contact_us,
+        name="contact_us",
+    ),
+    path(
+        'search/',
+        views.search_blog,
+        name="search_blog",
+    ),
 ]
