@@ -45,5 +45,10 @@ urlpatterns = [
         views.add_comment,
         name='add_comment'
     ),
+    path(
+        'edit_comment/<int:item_id>/',
+        views.edit_comment,
+        name='edit_comment',
+    ),
 
 ]

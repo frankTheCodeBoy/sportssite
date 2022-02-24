@@ -15,7 +15,9 @@
 {% if user_comments %}
 <div>
     {% for item in user_comments %}
-    <p>{{item.comment}}, {{item.owner}}, {{item.date_published}}</p>
+    <p>{{item.comment}}, {{item.owner}}, {{item.date_published}}<br>
+    <a href="{% url 'sportsApp:edit_comment' item.id %}">Edit Comment</a>
+    </p>
 </div>
     {% endfor %}
 </div>

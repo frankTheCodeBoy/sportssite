@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views import generic
@@ -142,3 +142,20 @@ def add_comment(request, blog_slug):
 
     context_dict = {'form': form, 'blog': blog, 'user_comments': user_comments}
     return render(request, 'sportsApp/add_comment.html', context_dict)
+
+def edit_comment(request, item_id):
+    comment = get_object_or_404(UserComment, id=item_id)
+    blog = comment.blog
+
+    if comment.owner != request.user:
+        raise Http404
+    else:
+        form = UserCommentForm(instance=comment)
+
+    if request.method == 'POST':
+        form = UserCommentForm(instance=comment, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("sportsApp:index")
+    context_dict = {'form': form, 'blog': blog, 'comment': comment}
+    return render(request, "sportsApp/edit_comment.html", context_dict)
