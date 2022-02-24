@@ -22,11 +22,18 @@
         <ul>
         {% for item in blogs %}
           <li><h2>{{ item.title }}:</h2></li>
+          <div>
+          {% if item.views > 1 %}
+              ({{item.views}} views)
+          {% elif item.views == 1 %}
+              ({{item.views}} view)
+          {% endif %} 
+          </div>
           {{ item.blog }}
           {% buttons %}
           <a href="{% url 'sportsApp:add_comment' item.slug %}">
             <button class="btn btn-primary btn-sm"
-            type="button">View Comments</button>
+            type="button">View Comment</button>
           </a>
           {% endbuttons %}
         {% endfor %}

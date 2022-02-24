@@ -50,5 +50,4 @@ urlpatterns = [
         views.edit_comment,
         name='edit_comment',
     ),
-
 ]

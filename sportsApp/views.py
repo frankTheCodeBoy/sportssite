@@ -119,12 +119,14 @@ class ProfileView(View):
         return render(request, 'sportsApp/profile.html', context_dict)
         
 class ListProfileView(generic.ListView):
-  model = UserProfile
-  template_name = 'sportsApp/list_profiles.html'
-  context_object_name = 'userprofile_list'
+    model = UserProfile
+    template_name = 'sportsApp/list_profiles.html'
+    context_object_name = 'userprofile_list'
 
 def add_comment(request, blog_slug):
     blog = get_object_or_404(SportBlog, slug=blog_slug)
+    blog.views += 1
+    blog.save()
     user_comments = blog.usercomment_set.order_by('date_published')
     if request.method != 'POST':
         form = UserCommentForm()
@@ -159,3 +161,9 @@ def edit_comment(request, item_id):
             return redirect("sportsApp:index")
     context_dict = {'form': form, 'blog': blog, 'comment': comment}
     return render(request, "sportsApp/edit_comment.html", context_dict)
+
+# def search_page(request):
+#     search_text = request.GET['query']
+#     pages = Page.objects.filter(title__contains=search_text)
+#     context_dict = {'pages': pages}
+#     return render(request, 'rangoApp/search.html', context_dict)
