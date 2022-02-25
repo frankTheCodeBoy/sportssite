@@ -60,4 +60,10 @@ urlpatterns = [
         views.search_blog,
         name="search_blog",
     ),
+    path(
+        'event_detail/<int:event_id>/',
+        views.event_detail,
+        name="event_detail",
+    ),
+
 ]

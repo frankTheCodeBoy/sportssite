@@ -1,0 +1,17 @@
+{% extends 'sportsApp/base.html' %}
+{% load static %}
+{% block title_block %}
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+{% if event %}
+<h2 class="txtmaroon txtbold">• {{event.text}}-</h2>
+<span class="txtgrey txtoblique">[{{event.date}}]</span>
+<div class="container">
+    <h4 class="txtdarkblue underline">Event brief.</h4>
+    <span class="txtcyan txtoblique">"{{event.summary}}"</span>
+</div>
+{% endif %}
+</div>
+{% endblock %}

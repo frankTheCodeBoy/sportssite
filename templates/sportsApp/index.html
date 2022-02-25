@@ -1,11 +1,11 @@
 {% extends 'sportsApp/base.html' %}
 {% load static %}
 {% block title_block %}
-: home
+ home
 {% endblock %}
 
 {% block body_block %}
-<div class="container sport-bg">
+<div class="container">
 <h1 class="txtcyan txtbold">Sports</h1>
 {% if sports_list %}
     <div class="d-flex flex-row bd-highlight mb-3 justify-content-center
@@ -30,7 +30,8 @@
 {% if other_sports %}
 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     {% for item in other_sports %}
-    <a class="dropdown-item dropdown-header" href="#">{{item.name}}</a>
+    <a class="dropdown-item dropdown-header" 
+    href="{% url 'sportsApp:sports' item.slug %}">{{item.name}}</a>
     {% endfor %}
 </div>
 </div>
@@ -46,7 +47,10 @@
             <div>
                 <img src="{{MEDIA_URL}}{{item.picture}}"
                     width="45%">
-            <div class="div-width"><a href="#">{{item.summary}}</a></div>
+            <div class="div-width"><a 
+                href="{% url 'sportsApp:add_comment' item.slug %}">
+                    {{item.summary}}
+            </a></div>
         </div>
     </div>        
     {% endfor %}
@@ -63,7 +67,10 @@
             <div>
                 <img src="{{MEDIA_URL}}{{item.picture}}"
                     width="45%">
-            <div class="div-width"><a href="#">{{item.summary}}</a></div>
+            <div class="div-width"><a 
+                href="{% url 'sportsApp:add_comment' item.slug %}">
+                {{item.summary}}
+            </a></div>
         </div>
     </div>         
     {% endfor %}
@@ -91,15 +98,17 @@
 {% endif %}
 <hr>
 {% if event_list %}
-<hr>
-<h3>Upcoming Sport Events</h3>
+<h3 class="txtdarkred txtbold underline">Upcoming Sporting Events</h3>
 <ul>
     {% for event in event_list %}
         <li>
-            {{event.text}}: {{event.date}} [{{event.location}}]
+            <a class="txtnavy" href="{% url 'sportsApp:event_detail' event.id %}">
+                {{event.text}} happening on the {{event.date}} 
+                at {{event.location}}
+            </a>
         </li>
-</ul>
     {% endfor %}
+</ul>
 {% else %}
 <strong><i>Your top events and recommendations appear here!</i></strong>
 {% endif %}

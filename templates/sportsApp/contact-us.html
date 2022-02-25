@@ -1,18 +1,41 @@
 {% extends 'sportsApp/base.html' %}
+{% load static %}
 {% block title_block %}
 {% endblock %}
 
 {% block body_block %}
-<div>
-    <p>For any queries, please reach out via:
-        <br>
-    Tel:
-        <br>
-    E-Mail:
-    </p>
-    <p>Share/ Visit our social sites:
-    <a href="https:www.facebook.com">facebook</a>
-    <a href="https:www.instagram.com">instagram</a>
-    </p>
+<div class="container sport-bg">
+    <div><h3 class="txtcyan txtbold underline">For any queries, please reach out to
+    us:</h3>
+    <div class="container">
+    <img src="{% static 'images/tel.png' %}"
+            width="40" height="40"> 
+            <span class="txtbold txtnavy">+243 818 499 8205 / +234 734 633 607</span>
+    </div>
+    <br>
+    <div class="container">
+    <img src="{% static 'images/mail.png'%}"
+            width="40" height="40">
+            <span class="txtbold txtgreen">billydisu@milelesports.com</span>
+    </div>
+    <div class="container"><br>
+        <h5 class="txtbold">OR</h5>
+        <h4 class="txtgrey txtbold underline">Visit our social sites:</h4>
+    <div class="container">    
+    <a href="https://twitter.com/milelesports">
+        <img src="{% static 'images/twitter-logo.png' %}"
+        width="40" height="40">
+    </a>
+    <a href="https://www.facebook.com">
+        <img src="{% static 'images/fb_icon.png' %}"
+        width="40" height="40">
+    </a>
+    <a href="https://www.instagram.com/milelesports">
+        <img src="{% static 'images/insta-logo.png' %}"
+        width="40" height="40">
+    </a>  
+    </div>
+    </div>
 </div>
+<hr>
 {% endblock %}

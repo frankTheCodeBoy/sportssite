@@ -4,6 +4,10 @@ from .models import UserProfile, UserComment
 
 class UserProfileForm(forms.ModelForm):
     picture = forms.ImageField(required=False)
+    fav_sport = forms.CharField(
+        max_length=20,
+        help_text="what's the name of your favourite sport?",
+        required=False)
     message = forms.CharField(widget=forms.Textarea(
         attrs={'cols':25, 'rows': 15}), 
         required=False
@@ -11,7 +15,7 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('picture', 'message',)
+        fields = ('picture', 'fav_sport' , 'message',)
 
 class UserCommentForm(forms.ModelForm):
     comment = forms.CharField(widget=forms.Textarea(

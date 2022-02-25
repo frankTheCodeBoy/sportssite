@@ -17,7 +17,7 @@ class IndexView(View):
         blog_list = SportBlog.objects.order_by('date_published')[:2]
         second_blog = SportBlog.objects.order_by('date_published')[2:4]
         player_list = Player.objects.all()[:2]
-        event_list = UpComingEvent.objects.order_by('date')
+        event_list = UpComingEvent.objects.order_by('date')[:7]
         context_dict = {
             'sports_list': sports_list, 
             'blog_list': blog_list,
@@ -129,6 +129,7 @@ class ListProfileView(generic.ListView):
     template_name = 'sportsApp/list_profiles.html'
     context_object_name = 'userprofile_list'
 
+@login_required
 def add_comment(request, blog_slug):
     blog = get_object_or_404(SportBlog, slug=blog_slug)
     blog.views += 1
@@ -151,6 +152,7 @@ def add_comment(request, blog_slug):
     context_dict = {'form': form, 'blog': blog, 'user_comments': user_comments}
     return render(request, 'sportsApp/add_comment.html', context_dict)
 
+@login_required
 def edit_comment(request, item_id):
     comment = get_object_or_404(UserComment, id=item_id)
     blog = comment.blog
@@ -176,3 +178,8 @@ def search_blog(request):
 
 def contact_us(request):
     return render(request, 'sportsApp/contact-us.html', {})
+
+def event_detail(request, event_id):
+    event = get_object_or_404(UpComingEvent, id=event_id)
+    context_dict = {'event': event}
+    return render(request, 'sportsApp/event_detail.html', context_dict)

@@ -7,7 +7,8 @@
     {% block body_block %}
     <div class="jumbotron p-4">
         <div class="container">
-            <h1 class="jumbotron-heading">{{ selected_user.username }}'s Profile</h1>
+            <h1 class="jumbotron-heading txtdarkblue txtbold">
+            {{ selected_user.username }}'s Profile</h1>
         </div>
     </div>
     
@@ -28,9 +29,13 @@
                     {% endbuttons %}
                 </form>
                 {% else %}
-                <p>
+                <p> 
                     <strong>Message:</strong>
                     <a href="{{ user_profile.message }}">{{ user_profile.message }}</a>
+                </p>
+                <p>
+                    <strong>Favourite Sport:</strong>
+                    <a href="{{ user_profile.fav_sport }}">{{ user_profile.fav_sport }}</a>
                 </p>
                 {% endif %}
             </div>

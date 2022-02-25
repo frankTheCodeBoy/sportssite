@@ -49,6 +49,7 @@ class Player(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     picture = models.ImageField(upload_to='profile_images', blank=True)
+    fav_sport = models.CharField(max_length=20, blank=True)
     message = models.TextField(blank=True)
 
     def __str__(self):

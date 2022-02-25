@@ -42,6 +42,18 @@ li {
     color: darkgrey;
 }
 
+.txtlightseagreen {
+    color: lightseagreen;
+}
+
+.txtdarkseagreen {
+    color: darkseagreen;
+}
+
+.txtseagreen {
+    color: seagreen;
+}
+
 .txtitalic {
     font-style: italic;
 }

@@ -5,7 +5,7 @@
 
 {% block body_block %}
 <div class="container">
-<h1 class="display-3">User Profiles</h1>
+<h1 class="display-3 txtmaroon txtbold">User Profiles</h1>
 
 <div class="panel">
     {% if userprofile_list %}
@@ -22,7 +22,7 @@
                     <img src="https://via.placeholder.com/64x64.png?text=IMAGE">
                     {% endif %}
                     <h4 class="list-group-item-heading">
-                    <a href=
+                    <a class="txtdarkblue" href=
                     "{% url 'sportsApp:profile' listuser.user.username %}">
                     {{ listuser.user.username }}</a>
                     </h4>
