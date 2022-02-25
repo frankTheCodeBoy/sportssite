@@ -8,14 +8,13 @@ home
 {% block body_block %}
 <div>
     <div>
-        <img src="" 
-        class=""
+        <img src="{% static 'images/sports-wall.png' %}" 
         width="100%">
     </div>
     <div>
     <a 
-    class="btn-sport btn btn-block btn-lg btn-success" 
-    href="#" role="button">Navigate to Sports &raquo;
+    class="btn-sport btn btn-block btn-lg btn-primary" 
+    href="{% url 'sportsApp:index' %}" role="button">Navigate To Sports &raquo;
     </a>
     </div>   
 </div>
