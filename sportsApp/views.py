@@ -28,6 +28,9 @@ class IndexView(View):
             }
         return render(request, 'sportsApp/index.html', context_dict)
 
+def home_page(request):
+    return render(request, 'sportsApp/home.html', {})
+
 class AboutView(View):
     def get(self,request):
         return render(request, 'sportsApp/about.html', {})
@@ -68,7 +71,7 @@ def register_profile(request):
             user_profile.user = request.user
             user_profile.save()
             
-            return redirect("/")
+            return redirect("sportsApp:index")
         else:
             print(form.errors)
     
@@ -95,7 +98,7 @@ class ProfileView(View):
         try:
             (user, user_profile, form) = self.get_user_details(username)
         except TypeError:
-            return redirect("/")
+            return redirect("sportsApp:index")
         
         context_dict = {'user_profile': user_profile,
                         'selected_user': user,
@@ -108,13 +111,13 @@ class ProfileView(View):
         try:
             (user, user_profile, form) = self.get_user_details(username)
         except TypeError:
-            return redirect("/")
+            return redirect("sportsApp:index")
         
         form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
         
         if form.is_valid():
             form.save(commit=True)
-            return redirect("/")
+            return redirect("sportsApp:index")
         else:
             print(form.errors)
         

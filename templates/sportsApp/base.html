@@ -20,7 +20,9 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 border">
     <li class="navbar-brand p-2 flex-fill bd-highlight">
-        <strong class="txtred txtbold">Milele Sports Limited™</strong>
+        <strong><a class="txtred txtbold" 
+            href="{% url 'sportsApp:home_page' %}">
+        Milele Sports Limited™</a></strong>
         <br><strong>Your Home of Sports</strong>
     </li>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -95,6 +97,7 @@
       </div>
     </footer>
     <script src="{% static 'js/ajax.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
     </main>
 </body>
 </html>

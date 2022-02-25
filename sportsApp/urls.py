@@ -11,9 +11,14 @@ urlpatterns = [
         name="register_profile"
     ),
     path(
-        "",
+        "index/",
         views.IndexView.as_view(),
         name="index"
+    ),
+    path(
+        "",
+        views.home_page,
+        name="home_page",
     ),
     path(
         "about/",

@@ -124,8 +124,8 @@ USE_TZ = True
 REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = 'sportsApp:index'
+LOGIN_URL = 'auth_login' 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
