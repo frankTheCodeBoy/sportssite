@@ -12,8 +12,8 @@ from .forms import UserProfileForm, UserCommentForm
 
 class IndexView(View):
     def get(self, request):
-        sports_list = Sport.objects.all()[:6]
-        other_sports = Sport.objects.all()[6:12]
+        sports_list = Sport.objects.all()[:5]
+        other_sports = Sport.objects.all()[5:20]
         blog_list = SportBlog.objects.order_by('date_published')[:2]
         second_blog = SportBlog.objects.order_by('date_published')[2:4]
         player_list = Player.objects.all()[:2]

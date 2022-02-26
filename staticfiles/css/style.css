@@ -54,6 +54,10 @@ li {
     color: seagreen;
 }
 
+.txtblack {
+    color: black;
+}
+
 .txtitalic {
     font-style: italic;
 }
