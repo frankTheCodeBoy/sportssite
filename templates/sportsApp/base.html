@@ -23,8 +23,8 @@
     <li class="navbar-brand p-2 flex-fill bd-highlight">
         <strong><a class="txtred txtbold" 
             href="{% url 'sportsApp:home_page' %}">
-        Milele Sports Limited™</a></strong>
-        <br><strong>Your Home of Sports</strong>
+        Milele Sports™</a></strong>
+        <br><strong>Home of Sports</strong>
     </li>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarCollapse" aria-controls="navbarCollapse"
@@ -41,13 +41,13 @@
         </li>
         <li class="nav-item p-2 flex-fill bd-highlight">
           <a class="nav-link" 
-            href="{% url 'sportsApp:contact_us' %}">Contact Us</a>
+            href="{% url 'sportsApp:contact_us' %}">Contact</a>
         </li>
         <li class="p-2 flex-fill bd-highlight">
           <form class="form" action="{% url 'sportsApp:search_blog'  %}" 
             method="get">
             {% csrf_token %}
-            <input type="text" size="20" name="query">
+            <input type="text" size="15" name="query">
             <button type="submit" 
               class="btn btn-sm btn-primary p-2 flex-fill bd-highlight">
                 Search Stories
@@ -59,11 +59,11 @@
     {% if user.is_authenticated %}
     <li class="nav-item p-2 flex-fill bd-highlight">
         <a class="nav-link" 
-        href="{% url 'sportsApp:profile' user.username %}">Your Profile</a>
+        href="{% url 'sportsApp:profile' user.username %}">{{user.username}}</a>
     </li>
     <li class="nav-item p-2 flex-fill bd-highlight">
         <a class="nav-link" 
-        href="{% url 'sportsApp:list_profiles' %}">List Profiles</a>
+        href="{% url 'sportsApp:list_profiles' %}">All Profiles</a>
     </li>
     <li class="nav-item p-2 flex-fill bd-highlight">
         <a class="nav-link" href="{% url 'auth_logout' %}">Logout</a>
