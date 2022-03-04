@@ -11,10 +11,17 @@ index
     <div class="d-flex flex-row bd-highlight mb-3 justify-content-center
         container">
     {% for item in sports_list %}
+        {% if item.name == 'Track & Field | Athletics' %}
+        <div class="p-1 flex-fill bd-highlight">
+            <a href="{% url 'sportsApp:sports' item.slug %}">
+                <h6 class="txtdarkred txtbold">{{ item.name }}</h6></a>
+        </div>
+        {% else %}
         <div class="p-1 flex-fill bd-highlight">
             <a href="{% url 'sportsApp:sports' item.slug %}">
                 <h6>{{ item.name }}</h6></a>
         </div>
+        {% endif %}
     {% endfor %}
     </div>
 {% else %}
@@ -47,9 +54,9 @@ index
             <div>
                 <img src="{{MEDIA_URL}}{{item.picture}}"
                     width="45%">
-            <div class="div-width bg-dark"><a 
+            <div class="div-width bg-light container"><a 
                 href="{% url 'sportsApp:add_comment' item.slug %}">
-                    🧧 {{item.summary}}
+                    <span class="txtmaroon">🡆</span> {{item.summary}}
             </a></div>
         </div>
     </div>        
@@ -67,9 +74,9 @@ index
             <div>
                 <img src="{{MEDIA_URL}}{{item.picture}}"
                     width="45%">
-            <div class="div-width bg-dark"><a 
+            <div class="div-width bg-light container"><a 
                 href="{% url 'sportsApp:add_comment' item.slug %}">
-                🧧 {{item.summary}}
+                <span class="txtnavy">🡆</span> {{item.summary}}
             </a></div>
         </div>
     </div>         

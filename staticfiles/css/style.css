@@ -117,6 +117,9 @@ li {
 
 .div-width {
     width: 45%;
+    border-width: 2px;
+    border-style: outset;
+
 }
 
 .txtalign {
