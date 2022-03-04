@@ -8,7 +8,7 @@
         shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="icon" href="{% static 'images/milelefav.ico' %}">
     <title>Milele Sports Limited:
         {% block title_block %}
         {% endblock %}
@@ -24,7 +24,7 @@
         <strong><a class="txtred txtbold" 
             href="{% url 'sportsApp:home_page' %}">
         Milele Sports™</a></strong>
-        <br><strong>Home of Sports</strong>
+        <br><strong>Discovering Talent | Bridging Sports</strong>
     </li>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarCollapse" aria-controls="navbarCollapse"
@@ -41,7 +41,7 @@
         </li>
         <li class="nav-item p-2 flex-fill bd-highlight">
           <a class="nav-link" 
-            href="{% url 'sportsApp:contact_us' %}">Contact</a>
+            href="{% url 'sportsApp:contact_us' %}">Reach</a>
         </li>
         <li class="p-2 flex-fill bd-highlight">
           <form class="form" action="{% url 'sportsApp:search_blog'  %}" 
@@ -50,7 +50,7 @@
             <input type="text" size="15" name="query">
             <button type="submit" 
               class="btn btn-sm btn-primary p-2 flex-fill bd-highlight">
-                Search Stories
+              🔍Sports
             </button>
           </form>
         </li>
@@ -63,14 +63,14 @@
     </li>
     <li class="nav-item p-2 flex-fill bd-highlight">
         <a class="nav-link" 
-        href="{% url 'sportsApp:list_profiles' %}">All Profiles</a>
+        href="{% url 'sportsApp:list_profiles' %}">All Users</a>
     </li>
     <li class="nav-item p-2 flex-fill bd-highlight">
         <a class="nav-link" 
         href="{% url 'auth_logout' %}?next={% url 'sportsApp:home_page' %}">Logout</a>
     </li>
     <li class="nav-item p-2 flex-fill bd-highlight">
-        <a class="nav-link" href="{% url 'auth_password_change' %}?next='auth_password_change_done' ">Change Password</a>
+        <a class="nav-link" href="{% url 'auth_password_change' %}?next='auth_password_change_done' ">Pass-Change</a>
     </li>
     {% else %}
     <li class="nav-item p-2 flex-fill bd-highlight">

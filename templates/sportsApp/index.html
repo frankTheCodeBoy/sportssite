@@ -47,9 +47,9 @@ index
             <div>
                 <img src="{{MEDIA_URL}}{{item.picture}}"
                     width="45%">
-            <div class="div-width"><a 
+            <div class="div-width bg-dark"><a 
                 href="{% url 'sportsApp:add_comment' item.slug %}">
-                    {{item.summary}}
+                    🧧 {{item.summary}}
             </a></div>
         </div>
     </div>        
@@ -67,9 +67,9 @@ index
             <div>
                 <img src="{{MEDIA_URL}}{{item.picture}}"
                     width="45%">
-            <div class="div-width"><a 
+            <div class="div-width bg-dark"><a 
                 href="{% url 'sportsApp:add_comment' item.slug %}">
-                {{item.summary}}
+                🧧 {{item.summary}}
             </a></div>
         </div>
     </div>         
@@ -91,7 +91,7 @@ index
         <strong><h4 class="txtcaps txtbold txtorange">• {{ player.name }}</h4></strong>
         <img src="{{MEDIA_URL}}{{player.picture}}"
             width="50%">
-        <p class="player txtoblique">"{{player.profile_summary}}"</p>
+        <p class="player txtoblique txtgreen">"{{player.profile_summary}}"</p>
     </div>
     {% endfor %}
 </div>
