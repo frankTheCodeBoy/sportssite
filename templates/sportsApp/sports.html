@@ -35,20 +35,18 @@
             <h6 class="underline txtgrey">Story - (posted {{item.date_published}})</h6>
             <div class="txtblack">{{item.blog|linebreaks}}</div>
           </div>
-          <hr>
           {% buttons %}
           <a href="{% url 'sportsApp:add_comment' item.slug %}">
             <button class="btn btn-primary btn-sm"
             type="button">View Comments</button>
           </a>
           {% endbuttons %}
+          <hr>
         {% endfor %}
         </ul>
       {% else %}
         <strong>No items currently in this category!</strong>
       {% endif %}
-    {% else %}
-     The specified category does not exist!
     {% endif %}
 {% endblock %}
     

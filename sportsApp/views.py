@@ -14,10 +14,10 @@ class IndexView(View):
     def get(self, request):
         sports_list = Sport.objects.all()[:5]
         other_sports = Sport.objects.all()[5:20]
-        blog_list = SportBlog.objects.order_by('date_published')[:2]
-        second_blog = SportBlog.objects.order_by('date_published')[2:4]
-        player_list = Player.objects.all()[:2]
-        event_list = UpComingEvent.objects.order_by('date')[:7]
+        blog_list = SportBlog.objects.order_by('-date_published')[:2]
+        second_blog = SportBlog.objects.order_by('-date_published')[2:4]
+        player_list = Player.objects.order_by('-id')[:2]
+        event_list = UpComingEvent.objects.order_by('-date')[:7]
         context_dict = {
             'sports_list': sports_list, 
             'blog_list': blog_list,
@@ -40,7 +40,7 @@ class SportsView(View):
         """Navigate to each sport"""
         context_dict = {}
         sport = get_object_or_404(Sport, slug=sports_slug)
-        blogs = sport.sportblog_set.order_by('date_published')
+        blogs = sport.sportblog_set.order_by('-date_published')
         context_dict['sport'] = sport
         context_dict['blogs'] = blogs
         return render(request, 'sportsApp/sports.html', context_dict)
@@ -137,7 +137,7 @@ def add_comment(request, blog_slug):
     blog = get_object_or_404(SportBlog, slug=blog_slug)
     blog.views += 1
     blog.save()
-    user_comments = blog.usercomment_set.order_by('date_published')
+    user_comments = blog.usercomment_set.order_by('-date_published')
     if request.method != 'POST':
         form = UserCommentForm()
     else:
