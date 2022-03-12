@@ -88,7 +88,8 @@ class ProfileView(View):
         user_profile = UserProfile.objects.get_or_create(user=user)[0]
         form = UserProfileForm({
                                 'picture': user_profile.picture,
-                                'message': user_profile.message
+                                'message': user_profile.message,
+                                'fav_sport': user_profile.fav_sport,
                             })
         
         return (user, user_profile, form)
