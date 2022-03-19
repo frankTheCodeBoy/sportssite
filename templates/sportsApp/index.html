@@ -110,8 +110,7 @@ index
     {% for event in event_list %}
         <li>
             <a class="txtnavy" href="{% url 'sportsApp:event_detail' event.id %}">
-                {{event.text}} happening on the {{event.date}} 
-                at {{event.location}}
+                {{event.text}} happening on the {{event.date}} at {{event.location}}
             </a>
         </li>
     {% endfor %}

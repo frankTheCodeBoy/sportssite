@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+import datetime
 
 # Create your models here.
 class Sport(models.Model):
@@ -76,6 +77,7 @@ class UpComingEvent(models.Model):
     location = models.CharField(max_length=128)
     summary = models.TextField()
     date = models.DateTimeField()
+    end_date = models.DateTimeField()
 
     def __str__(self):
         return self.text

@@ -13,11 +13,11 @@ from .forms import UserProfileForm, UserCommentForm
 class IndexView(View):
     def get(self, request):
         sports_list = Sport.objects.all()[:5]
-        other_sports = Sport.objects.all()[5:20]
+        other_sports = Sport.objects.all()[5:30]
         blog_list = SportBlog.objects.order_by('-date_published')[:2]
         second_blog = SportBlog.objects.order_by('-date_published')[2:4]
         player_list = Player.objects.order_by('-id')[:2]
-        event_list = UpComingEvent.objects.order_by('-date')[:7]
+        event_list = UpComingEvent.objects.order_by('-date')[:14]
         context_dict = {
             'sports_list': sports_list, 
             'blog_list': blog_list,
