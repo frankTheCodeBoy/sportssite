@@ -85,6 +85,26 @@ index
 {% else %}
 <strong>No more blogs added!</strong>
 {% endif %}
+{% if third_blog %}
+<div class="d-flex flex-row bd-highlight mb-3 justify-content-center
+    container">
+    {% for item in third_blog %}
+    <div class="p-2 flex-fill bd-highlight">
+            <h3 class="underline txtnavy txtcaps">{{item.title}}:</h3>
+            <div>
+                <img src="{{MEDIA_URL}}{{item.picture}}"
+                    width="45%">
+            <div class="div-width bg-light container"><a 
+                href="{% url 'sportsApp:add_comment' item.slug %}">
+                <span class="txtgreen">🡆</span> {{item.summary}}
+            </a></div>
+        </div>
+    </div>         
+    {% endfor %}
+</div>
+{% else %}
+<strong>No more blogs added!</strong>
+{% endif %}
 <hr>
 {% if player_list %}
 <h2 class="txtbold txtcyan">Featured ✰✰✰✰</h2> 
