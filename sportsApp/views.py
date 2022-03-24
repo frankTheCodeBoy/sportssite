@@ -18,7 +18,7 @@ class IndexView(View):
         second_blog = SportBlog.objects.order_by('-date_published')[2:4]
         third_blog = SportBlog.objects.order_by('-date_published')[4:6]
         player_list = Player.objects.order_by('-id')[:2]
-        event_list = UpComingEvent.objects.order_by('-date')[:14]
+        event_list = UpComingEvent.objects.order_by('-date')[:25]
         context_dict = {
             'sports_list': sports_list, 
             'blog_list': blog_list,
