@@ -52,7 +52,7 @@ index
     <div class="p-2 flex-fill bd-highlight">
             <h3 class="underline txtnavy txtcaps">{{item.title}}:</h3>
             <div>
-                <img src="{{MEDIA_URL}}{{item.picture}}"
+                <img class="geeks" src="{{MEDIA_URL}}{{item.picture}}"
                     width="45%">
             <div class="div-width bg-light container"><a 
                 href="{% url 'sportsApp:add_comment' item.slug %}">
@@ -72,7 +72,7 @@ index
     <div class="p-2 flex-fill bd-highlight">
             <h3 class="underline txtnavy txtcaps">{{item.title}}:</h3>
             <div>
-                <img src="{{MEDIA_URL}}{{item.picture}}"
+                <img class="geeks" src="{{MEDIA_URL}}{{item.picture}}"
                     width="45%">
             <div class="div-width bg-light container"><a 
                 href="{% url 'sportsApp:add_comment' item.slug %}">
@@ -92,7 +92,7 @@ index
     <div class="p-2 flex-fill bd-highlight">
             <h3 class="underline txtnavy txtcaps">{{item.title}}:</h3>
             <div>
-                <img src="{{MEDIA_URL}}{{item.picture}}"
+                <img class="geeks" src="{{MEDIA_URL}}{{item.picture}}"
                     width="45%">
             <div class="div-width bg-light container"><a 
                 href="{% url 'sportsApp:add_comment' item.slug %}">
@@ -116,7 +116,7 @@ index
     {% for player in player_list %}
     <div class="p-2 flex-fill bd-highlight">
         <strong><h4 class="txtcaps txtbold txtorange">• {{ player.name }}</h4></strong>
-        <img src="{{MEDIA_URL}}{{player.picture}}"
+        <img class="geeks" src="{{MEDIA_URL}}{{player.picture}}"
             width="50%">
         <p class="player txtoblique txtgreen">"{{player.profile_summary}}"</p>
     </div>
@@ -129,8 +129,9 @@ index
 <ul>
     {% for event in event_list %}
         <li>
-            <a class="txtnavy" href="{% url 'sportsApp:event_detail' event.id %}">
-                {{event.text}} happening on the {{event.date}} at {{event.location}}
+            <a class="txtnavy event-hover" 
+            href="{% url 'sportsApp:event_detail' event.id %}">
+            {{event.text}} happening on the {{event.date}} at {{event.location}}
             </a>
         </li>
     {% endfor %}

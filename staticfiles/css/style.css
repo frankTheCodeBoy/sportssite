@@ -2,7 +2,11 @@ li {
     color: darkblue;
 }
 
-.txtred{
+.geeks:hover {
+    transform: scale(1.5);
+}
+
+.txtred {
     color: red;
 }
 
@@ -133,5 +137,15 @@ p.player {
 .div-dimensions {
     width: 300px;
     height: 300px;
+}
+
+/* mouse over link */
+.event-hover:hover {
+  color: hotpink;
+}
+
+/*link visited*/
+.event-hover:visited {
+  color: chocolate;
 }
 
