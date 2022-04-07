@@ -54,12 +54,46 @@ li {
     color: darkseagreen;
 }
 
-.txtseagreen {
-    color: seagreen;
+.txtgoldenrod {
+    color: goldenrod;
+}
+
+.txtgreenyellow {
+    color: greenyellow;
 }
 
 .txtblack {
     color: black;
+}
+
+hr {
+    height: 1px;
+    background-color: lightslategray;
+    border: none;
+}
+
+.hr-one {
+    height: 1px;
+    background-color: lightslategray;
+    border: none;
+}
+
+.hr-two {
+    height: 1px;
+    background-color: lightsalmon;
+    border: none;
+}
+
+.hr-three {
+    height: 1px;
+    background-color: lightgreen;
+    border: none;
+}
+
+.hr-four {
+    height: 1px;
+    background-color: goldenrod;
+    border: none;
 }
 
 .txtitalic {

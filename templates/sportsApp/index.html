@@ -43,7 +43,7 @@ index
 </div>
 </div>
 {% endif %}
-<hr>
+<hr class="hr-one">
 <h2 class="txtdarkred txtbold underline txtoblique">Top Sport Highlights</h2>
 {% if blog_list %}
 <div class="d-flex flex-row bd-highlight mb-3 justify-content-center
@@ -105,9 +105,29 @@ index
 {% else %}
 <strong>No more blogs added!</strong>
 {% endif %}
-<hr>
+{% if fourth_blog %}
+<div class="d-flex flex-row bd-highlight mb-3 justify-content-center
+    container">
+    {% for item in fourth_blog %}
+    <div class="p-2 flex-fill bd-highlight">
+            <h3 class="underline txtnavy txtcaps">{{item.title}}:</h3>
+            <div>
+                <img class="geeks" src="{{MEDIA_URL}}{{item.picture}}"
+                    width="45%">
+            <div class="div-width bg-light container"><a 
+                href="{% url 'sportsApp:add_comment' item.slug %}">
+                <span class="txtgoldenrod">🡆</span> {{item.summary}}
+            </a></div>
+        </div>
+    </div>         
+    {% endfor %}
+</div>
+{% else %}
+<strong>No more blogs added!</strong>
+{% endif %}
+<hr class="hr-three">
 {% if player_list %}
-<h2 class="txtbold txtcyan">Featured ✰✰✰✰</h2> 
+<h2 class="txtbold txtgoldenrod">✰✰✰✰ <span class="txtcyan">Featured</span></h2> 
     <h5 class="underline txtmaroon txtbold">
     Weekly Stars - Players to Watch:
     </h5>
@@ -123,9 +143,11 @@ index
     {% endfor %}
 </div>
 {% endif %}
-<hr>
+<hr class="hr-two">
 {% if event_list %}
-<h3 class="txtdarkred txtbold underline">Major Upcoming Sport Events Worldwide</h3>
+<h3 class="txtdarkred txtbold">🕛<span class="underline">Major Upcoming Sport Events Worldwide
+    </span>
+</h3>
 <ul>
     {% for event in event_list %}
         <li>
