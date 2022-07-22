@@ -76,8 +76,8 @@ class UpComingEvent(models.Model):
     url = models.URLField(blank=True)
     location = models.CharField(max_length=128)
     summary = models.TextField()
-    date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    date = models.DateTimeField(auto_now=False)
+    end_date = models.DateTimeField(auto_now=False)
 
     def __str__(self):
         return self.text
