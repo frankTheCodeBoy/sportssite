@@ -32,19 +32,20 @@ index
   href="#" role="button" id="dropdownMenuLink" 
   data-toggle="dropdown" aria-haspopup="true" 
   aria-expanded="false">
-    <i>Other Sports</i>
+    <i>All Sports</i>
   </a>
-{% if other_sports %}
+{% if all_sports %}
 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    {% for item in other_sports %}
+    {% for item in all_sports %}
     <a class="dropdown-item dropdown-header" 
     href="{% url 'sportsApp:sports' item.slug %}">{{item.name}}</a>
     {% endfor %}
 </div>
 </div>
 {% endif %}
+<div class="indexbg">
 <hr class="hr-one">
-<h2 class="txtdarkred txtbold underline txtoblique">Top Sport Highlights</h2>
+<h2 class="container txtdarkred txtbold underline txtoblique">Top Sport Highlights</h2>
 {% if blog_list %}
 <div class="d-flex flex-row bd-highlight mb-3 justify-content-center
     container">
@@ -126,6 +127,7 @@ index
 <strong>No more blogs added!</strong>
 {% endif %}
 <hr class="hr-three">
+</div>
 {% if player_list %}
 <h2 class="txtbold txtgoldenrod">✰✰✰✰ <span class="txtcyan">Featured</span></h2> 
     <h5 class="underline txtmaroon txtbold">

@@ -13,7 +13,7 @@ from .forms import UserProfileForm, UserCommentForm
 class IndexView(View):
     def get(self, request):
         sports_list = Sport.objects.all()[:5]
-        other_sports = Sport.objects.all()[5:34]
+        all_sports = Sport.objects.order_by('name')
         blog_list = SportBlog.objects.order_by('-date_published')[:2]
         second_blog = SportBlog.objects.order_by('-date_published')[2:4]
         third_blog = SportBlog.objects.order_by('-date_published')[4:6]
@@ -26,7 +26,7 @@ class IndexView(View):
             'second_blog': second_blog,
             'third_blog': third_blog,
             'fourth_blog': fourth_blog,
-            'other_sports': other_sports,
+            'all_sports': all_sports,
             'player_list': player_list,
             'event_list': event_list,     
             }

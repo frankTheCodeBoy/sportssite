@@ -78,6 +78,10 @@ hr {
     border: none;
 }
 
+.indexbg {
+    background-color: lightyellow;
+}
+
 .hr-two {
     height: 1px;
     background-color: lightsalmon;
